@@ -1,0 +1,261 @@
+@include('layouts.header')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <!-- <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">User</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3" id='name_p'></h5>
+                            <p class="text-muted mb-1" id="mail_p"></p>
+                            <p class="text-muted mb-4" id="addr_p"></p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <button type="button" class="btn btn-primary">Follow</button>
+                                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-8" id="personlInfo">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="fname" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example1">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="form10Example2" class="form-control" />
+                                        <label class="form-label" for="form10Example2">Middle Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="lname" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example3">Last Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-outline">
+                                        <input type="text" id="form10Example1" class="form-control" />
+                                        <label class="form-label" for="form10Example1">Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="form10Example1" class="form-control" />
+                                        <label class="form-label" for="form10Example1">Mobile</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="mail" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example2">Mail</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row mb-4">
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="addr" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example2">Address</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-block">
+                                <button type="button" class="btn btn-primary mb-4"
+                                    onclick="changeToProfetional()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-8" id="profetionalInfo" style='display: none'>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="fname" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example1">Your Profetion (backend
+                                            developer, frontend devloper ..)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-outline">
+                                        <input type="text" id="form10Example1" class="form-control" />
+                                        <label class="form-label" for="form10Example1">Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="form10Example1" class="form-control" />
+                                        <label class="form-label" for="form10Example1">Mobile</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="mail" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example2">Mail</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row mb-4">
+                                <div class="col-sm">
+                                    <div class="form-outline">
+                                        <input type="text" id="addr" class="form-control" oninput="show_profile()" />
+                                        <label class="form-label" for="form10Example2">Address</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-block">
+                                <button class="btn btn-primary mb-4" onclick='changeToPersonal()'>Back</button>
+                            </div>
+                            <div class="d-block">
+                                <button class="btn btn-primary mb-4">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <div class="btn-group">
+            <button id="edit-btn" type="button" class="btn btn-primary">Edit</button>
+            <button id="view-btn" type="button" class="btn btn-secondary">View</button>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-modal-label">Edit Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Add your form fields here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Modal -->
+        <div class="modal fade" id="view-modal" tabindex="-1" aria-labelledby="view-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="view-modal-label">View Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Add your profile view content here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Add event listener to toggle the buttons and modal display
+            document.getElementById("edit-btn").addEventListener("click", function () {
+                // Change the button text and toggle the modals
+                document.getElementById("edit-btn").classList.add("active");
+                document.getElementById("view-btn").classList.remove("active");
+                document.getElementById("edit-modal").classList.add("show");
+                document.getElementById("view-modal").classList.remove("show");
+            });
+
+            document.getElementById("view-btn").addEventListener("click", function () {
+                // Change the button text and toggle the modals
+                document.getElementById("view-btn").classList.add("active");
+                document.getElementById("edit-btn").classList.remove("active");
+                document.getElementById("view-modal").classList.add("show");
+                document.getElementById("edit-modal").classList.remove("show");
+            });
+        </script>
+
+
+
+
+    </section>
+    <script>
+        function show_profile() {
+            let fname = document.getElementById('fname').value;
+            let lname = document.getElementById('lname').value;
+            let mail = document.getElementById('mail').value;
+            let addr = document.getElementById('addr').value;
+            document.getElementById('name_p').innerText = fname + " " + lname
+            document.getElementById('mail_p').innerText = mail
+            document.getElementById('addr_p').innerText = addr
+        }
+        function changeToProfetional() {
+            document.getElementById('profetionalInfo').style.display = 'block';
+            document.getElementById('personlInfo').style.display = 'none';
+        }
+        function changeToPersonal() {
+            document.getElementById('profetionalInfo').style.display = 'none';
+            document.getElementById('personlInfo').style.display = 'block';
+        }
+    </script>
+</body>
+@include('layouts.footer')
+
+</html>
