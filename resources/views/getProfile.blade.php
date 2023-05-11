@@ -94,130 +94,133 @@
                     </div>
                 </div>
 
-
+                
                 <div class="col-lg-8" id="personlInfo">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row g-3">
-                                <div class="col-sm-4">
-                                    <div class="form-outline">
-                                        <input type="text" id="fname" class="form-control" oninput="show_profile()" />
-                                        <label class="form-label" for="form10Example1">First Name</label>
+                    <form action="{{url('/')}}/getProfile" method="POST">
+                    @csrf
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="fname" name="fname" class="form-control" oninput="show_profile()" />
+                                            <label class="form-label" for="form10Example1">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-outline">
+                                            <input type="text" id="mname" name="mname" class="form-control" />
+                                            <label class="form-label" for="form10Example2">Middle Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-outline">
+                                            <input type="text" id="lname" name="lname" class="form-control" oninput="show_profile()" />
+                                            <label class="form-label" for="form10Example3">Last Name</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm">
-                                    <div class="form-outline">
-                                        <input type="text" id="mname" class="form-control" />
-                                        <label class="form-label" for="form10Example2">Middle Name</label>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-outline">
+                                            <input type="text" id="phone" name="phone" class="form-control" />
+                                            <label class="form-label" for="form10Example1">Phone</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-outline">
+                                            <input type="password" id="password" name="password" class="form-control" />
+                                            <label class="form-label" for="form10Example1">Password</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm">
-                                    <div class="form-outline">
-                                        <input type="text" id="lname" class="form-control" oninput="show_profile()" />
-                                        <label class="form-label" for="form10Example3">Last Name</label>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="form-outline">
+                                            <input type="text" id="mail" class="form-control" oninput="show_profile()" />
+                                            <label class="form-label" for="form10Example2">Mail</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-outline">
-                                        <input type="text" id="phone" class="form-control" />
-                                        <label class="form-label" for="form10Example1">Phone</label>
+                                <hr>
+                                <div class="row mb-4">
+                                    <div class="col-sm">
+                                        <div class="form-outline">
+                                            <input type="text" id="addr" name="addr" class="form-control" oninput="show_profile()" />
+                                            <label class="form-label" for="form10Example2">Address</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm">
-                                    <div class="form-outline">
-                                        <input type="text" id="mobile" class="form-control" />
-                                        <label class="form-label" for="form10Example1">Mobile</label>
-                                    </div>
+                                <hr>
+                                <div class="d-block">
+                                    <button type="button" class="btn btn-primary mb-4"
+                                        onclick="changeToProfetional()">Next</button>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="form-outline">
-                                        <input type="text" id="mail" class="form-control" oninput="show_profile()" />
-                                        <label class="form-label" for="form10Example2">Mail</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row mb-4">
-                                <div class="col-sm">
-                                    <div class="form-outline">
-                                        <input type="text" id="addr" class="form-control" oninput="show_profile()" />
-                                        <label class="form-label" for="form10Example2">Address</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-block">
-                                <button type="button" class="btn btn-primary mb-4"
-                                    onclick="changeToProfetional()">Next</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-lg-8" id="profetionalInfo" style='display: none'>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row g-3">
-                                <div class="col-sm">
-                                    <div class="form-outline">
-                                        <input type="text" id="profession" class="form-control" oninput="show_profile()" />
-                                        <label class="form-label" for="form10Example1">Your Profetion (backend
-                                            developer, frontend devloper ..)</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row mb-4">
-                                <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="p-2 button-div edit-button"  data-mdb-toggle="modal" data-mdb-target="#AddEducationModel">+ Add your Education</div>
-                                        <div class="p-2 button-div view-button" data-mdb-toggle="modal" id="education_count" data-mdb-target="#ViewEducationModel" onclick="show_education()">View</div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="p-2 button-div edit-button" data-mdb-toggle="modal" data-mdb-target="#AddExperienceModel">+ Add your experience</div>
-                                        <div class="p-2 button-div view-button" data-mdb-toggle="modal" id="experience_count" data-mdb-target="#ViewExperienceModel" onclick="show_experience()">View</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="p-2 button-div edit-button" data-mdb-toggle="modal" data-mdb-target="#AddCertificateModel">+ Add your Certificates</div>
-                                        <div class="p-2 button-div view-button" data-mdb-toggle="modal" id="certificate_count" data-mdb-target="#ViewCertificateModel" onclick="show_certificate()">View</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr>
-                            <div class="row mb-4">
-                                <div class="form-outline">
-                                    <textarea class="form-control" id="about" rows="4"></textarea>
-                                    <label class="form-label" for="textAreaExample">About your self</label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-block">
-                                <button class="btn btn-primary mb-4" onclick='changeToPersonal()'>Back</button>
-                            </div>
-                            <div class="d-block">
-                                <button class="btn btn-primary mb-4">Save</button>
                             </div>
                         </div>
                     </div>
-                </div>
 
+
+
+                    <div class="col-lg-8" id="profetionalInfo" style='display: none'>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm">
+                                        <div class="form-outline">
+                                            <input type="text" id="profession" name="proff" class="form-control" oninput="show_profile()" />
+                                            <label class="form-label" for="form10Example1">Your Profetion (backend
+                                                developer, frontend devloper ..)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row mb-4">
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="p-2 button-div edit-button"  data-mdb-toggle="modal" data-mdb-target="#AddEducationModel">+ Add your Education</div>
+                                            <div class="p-2 button-div view-button" data-mdb-toggle="modal" id="education_count" data-mdb-target="#ViewEducationModel" onclick="show_education()">View</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="p-2 button-div edit-button" data-mdb-toggle="modal" data-mdb-target="#AddExperienceModel">+ Add your experience</div>
+                                            <div class="p-2 button-div view-button" data-mdb-toggle="modal" id="experience_count" data-mdb-target="#ViewExperienceModel" onclick="show_experience()">View</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="p-2 button-div edit-button" data-mdb-toggle="modal" data-mdb-target="#AddCertificateModel">+ Add your Certificates</div>
+                                            <div class="p-2 button-div view-button" data-mdb-toggle="modal" id="certificate_count" data-mdb-target="#ViewCertificateModel" onclick="show_certificate()">View</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <div class="row mb-4">
+                                    <div class="form-outline">
+                                        <textarea class="form-control" id="about" rows="4"></textarea>
+                                        <label class="form-label" for="textAreaExample">About your self</label>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-block">
+                                    <button type="button" class="btn btn-primary mb-4" onclick='changeToPersonal()'>Back</button>
+                                </div>
+                                <div class="d-block">
+                                    <button type="submit" class="btn btn-primary mb-4">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
 
 
             </div>
@@ -554,6 +557,10 @@
                 document.getElementById('certificate_count').innerHTML='View ('+certificate_data.length+")"
             }
         }
+        @if(Session::has('data'))
+            var data=<?=json_encode(Session::get('data'))?>;
+            console.log(data)
+        @endif
     </script>
 </body>
 @include('layouts.footer')

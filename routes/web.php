@@ -29,6 +29,10 @@ Route::get('/register', [RegistrationController::class,'index']);
 Route::post('/register', [RegistrationController::class,'register']);
 
 Route::get('/profile', [getProfileController::class,'index']);
+
+
+Route::post('/getProfile', [getProfileController::class,'register']);
+
 Route::get('/get_data',function(){
     $user_data=User_data::all();
     print_r($user_data->toArray());

@@ -56,10 +56,7 @@
                                 {{$message}}
                             @enderror
                         </span>
-                        <div class="form-outline text-center mb-4">
-                            <input type="name" name="name" id="form12" class="form-control" value='{{old("name")}}'/>
-                            <label class="form-label" for="form12">Your name</label>
-                        </div>
+                        
                         <span class="text-danger">
                             @error('mail')
                                 {{$message}}
@@ -83,8 +80,12 @@
                             <button type="submit" class="btn btn-primary mb-4">Login</button>
                         </div>
                         
-                        <div class="d-block">
-                            <a href="">Help</a>
+                        
+                        <div class="d-inline-block">
+                            <a href="{{ url('/profile') }}">Signup</a>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="d-inline-block">
+                            <a href="#">Help</a>
                         </div>
                 </div>
 
@@ -97,11 +98,22 @@
         @if(Session::has('success_failed'))
             @if(Session::get('success_failed') == 'success')
                 SweetAlert('login successfull','');
-            @else
-                
-                SweetAlert('Failed!!','Login credentials ar not valid')
+            @elseif(Session::get('success_failed') == 'Not Found')
+                SweetAlert('Failed!!','Mail ID not Found')
+            @elseif(Session::get('success_failed') == 'failed')
+                SweetAlert('Failed!!','Login Credentials are not matching')
             @endif
+            var a="<?=Session::get('success_failed')?>"
+            
         @endif
+
+
+        @if(Session::has('some_data'))
+            var a="<?=Session::get('some_data')?>"
+            console.log(a);
+        @endif
+        
+
         function SweetAlert(title,msg){
             swal({
                 title: title,
