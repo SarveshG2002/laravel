@@ -96,60 +96,95 @@
 
                 
                 <div class="col-lg-8" id="personlInfo">
-                    <form action="{{url('/')}}/getProfile" method="POST">
-                    @csrf
+                    <form id='myForm' action="{{url('/')}}/getProfile" method="POST" >
+                        @csrf
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="row g-3">
                                     <div class="col-sm-4">
+                                        <span class="text-danger">
+                                            @error('fname')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="text" id="fname" name="fname" class="form-control" oninput="show_profile()" />
-                                            <label class="form-label" for="form10Example1">First Name</label>
+                                            <label class="form-label" for="fname">First Name</label>
                                         </div>
                                     </div>
                                     <div class="col-sm">
+                                        <span class="text-danger">
+                                            @error('mname')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="text" id="mname" name="mname" class="form-control" />
-                                            <label class="form-label" for="form10Example2">Middle Name</label>
+                                            <label class="form-label" for="mname">Middle Name</label>
                                         </div>
                                     </div>
                                     <div class="col-sm">
+                                        <span class="text-danger">
+                                            @error('lname')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="text" id="lname" name="lname" class="form-control" oninput="show_profile()" />
-                                            <label class="form-label" for="form10Example3">Last Name</label>
+                                            <label class="form-label" for="lname">Last Name</label>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-6">
+                                        <span class="text-danger">
+                                            @error('phone')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="text" id="phone" name="phone" class="form-control" />
-                                            <label class="form-label" for="form10Example1">Phone</label>
+                                            <label class="form-label" for="phone">Phone</label>
                                         </div>
                                     </div>
                                     <div class="col-sm">
+                                        <span class="text-danger">
+                                            @error('password')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="password" id="password" name="password" class="form-control" />
-                                            <label class="form-label" for="form10Example1">Password</label>
+                                            <label class="form-label" for="password">Password</label>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm">
+                                        <span class="text-danger">
+                                            @error('mail')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
-                                            <input type="text" id="mail" class="form-control" oninput="show_profile()" />
-                                            <label class="form-label" for="form10Example2">Mail</label>
+                                            <input type="text" id="mail" class="form-control" name='mail' oninput="show_profile()" />
+                                            <label class="form-label" for="mail">Mail</label>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row mb-4">
                                     <div class="col-sm">
+                                        <span class="text-danger">
+                                            @error('addr')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="text" id="addr" name="addr" class="form-control" oninput="show_profile()" />
-                                            <label class="form-label" for="form10Example2">Address</label>
+                                            <label class="form-label" for="addr">Address</label>
                                         </div>
                                     </div>
                                 </div>
@@ -169,9 +204,14 @@
                             <div class="card-body">
                                 <div class="row g-3">
                                     <div class="col-sm">
+                                        <span class="text-danger">
+                                            @error('proff')
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                         <div class="form-outline">
                                             <input type="text" id="profession" name="proff" class="form-control" oninput="show_profile()" />
-                                            <label class="form-label" for="form10Example1">Your Profetion (backend
+                                            <label class="form-label" for="profession">Your Profetion (backend
                                                 developer, frontend devloper ..)</label>
                                         </div>
                                     </div>
@@ -204,17 +244,25 @@
 
                                 <hr>
                                 <div class="row mb-4">
+                                    <span class="text-danger">
+                                        @error('about')
+                                            {{$message}}
+                                        @enderror
+                                    </span>
                                     <div class="form-outline">
-                                        <textarea class="form-control" id="about" rows="4"></textarea>
-                                        <label class="form-label" for="textAreaExample">About your self</label>
+                                        <textarea class="form-control" id="about" name='about' rows="4"></textarea>
+                                        <label class="form-label" for="about">About your self</label>
                                     </div>
                                 </div>
                                 <hr>
+                                <input type="hidden" name="education" id="education">
+                                <input type="hidden" name="experience" id="experience">
+                                <input type="hidden" name="certificate" id="certificate">
                                 <div class="d-block">
                                     <button type="button" class="btn btn-primary mb-4" onclick='changeToPersonal()'>Back</button>
                                 </div>
                                 <div class="d-block">
-                                    <button type="submit" class="btn btn-primary mb-4">Save</button>
+                                    <button type="submit" class="btn btn-primary mb-4" id="save_data" onclick="save_data()">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -437,6 +485,49 @@
         let experience_data=[]
         let certificate_data=[]
         let total=0
+        // get the form and submit button elements
+        const myForm = document.getElementById('myForm');
+        const submitButton = document.getElementById('save_data');
+
+        // add a click event listener to the submit button
+        submitButton.addEventListener('click', function(event) {
+        // create a new FormData object and append additional data
+        // let myForm = document.getElementById('myForm');
+        // console.log(myForm)
+        // const formData = new FormData(myForm);
+        // console.log(formData)
+        // formData.append('somthing','something')
+        // loop through the education_data array and append each value individually
+        // for (let i = 0; i < education_data.length; i++) {
+        // formData.append('education_data[]', education_data[i]);
+        // }
+
+        // // loop through the experience_data array and append each value individually
+        // for (let i = 0; i < experience_data.length; i++) {
+        // formData.append('experience_data[]', experience_data[i]);
+        // }
+
+        // // loop through the certificate_data array and append each value individually
+        // for (let i = 0; i < certificate_data.length; i++) {
+        // formData.append('certificate_data[]', certificate_data[i]);
+        // }
+
+
+        // set the form data as the request body
+        // myForm.body = formData;
+        // console.log(formData)
+        // alert(formData.fname);
+        // submit the form
+        document.getElementById('education').value=JSON.stringify(education_data);
+        document.getElementById('experience').value=JSON.stringify(experience_data);
+        document.getElementById('certificate').value=JSON.stringify(certificate_data);
+
+        myForm.submit();
+
+        // prevent the default form submission
+        event.preventDefault();
+        });
+
         function show_profile() {
             let fname = document.getElementById('fname').value;
             let lname = document.getElementById('lname').value;
@@ -560,7 +651,26 @@
         @if(Session::has('data'))
             var data=<?=json_encode(Session::get('data'))?>;
             console.log(data)
+        @else
+            console.log('not found')
         @endif
+
+        @if(Session::has('success_failed'))
+            @if(Session::get('success_failed')=='ID exists')
+                SweetAlert('ID Exists',document.getElementById('mail').value+' allready exists')
+            @endif
+        @endif
+
+
+
+        function SweetAlert(title,msg){
+            swal({
+                title: title,
+                text: msg,
+                icon: "error",
+                button: "OK",
+            });
+        }
     </script>
 </body>
 @include('layouts.footer')

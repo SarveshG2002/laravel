@@ -14,7 +14,6 @@ class RegistrationController extends Controller
     public function register(Request $req){
         $req->validate(
             [
-                'name'=>'required',
                 'mail'=>'required|email',
                 'password'=>'required'
             ]

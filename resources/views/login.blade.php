@@ -51,11 +51,6 @@
                     @csrf
                     
                         <h1 class="mb-4">Login/Siginup</h1>
-                        <span class="text-danger">
-                            @error('name')
-                                {{$message}}
-                            @enderror
-                        </span>
                         
                         <span class="text-danger">
                             @error('mail')
