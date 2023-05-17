@@ -41,7 +41,8 @@ class getProfileController extends Controller
             $ud->certificate=$data['certificate'];
             $ud->experience=$data['experience'];
             $ud->save();
-            return redirect('/dashboard')->with('data',$ret);
+            session()->put('data', $data);
+            return redirect('/dashboard')->with('data',$data);
         }
         else{
             return redirect('/profile')->with('success_failed', 'ID exists');

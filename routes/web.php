@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\getProfileController;
 use App\User_data;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,8 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (Request $request) {
+    $request->session()->put('myData','myData');
     return view('dashboard');
 });
 // Route::get('/profile', function () {
